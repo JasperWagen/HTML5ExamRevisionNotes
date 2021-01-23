@@ -255,14 +255,90 @@ input attributes:
 
 
 ## CSS: Formatting the user interface (20- 25%)
-Understand the core CSS concepts:
-* Separate presentation from content 
-* Manage content flow (inline vs block)
-* Manage positioning of individual elements
-* Manage content overflow
+### Understand the core CSS concepts:
+**Separate presentation from content:**
+* the *link* tag is used to link html to CSS
+* *link* requires the follow attributes:
+  * href - URL to the .css file
+  * rel = "stylesheet"
+  * type = "text/css"
+* Standard practice is to link to separate stylesheets although inline styling is acceptable in small projects 
+* "Separation of content and style"
+* *@import* is used to embed one css file in another 
+
+**Selectors and Declarations:**
+* selector selects the element to be styles ie p, #header, .user-form
+* Declaration is what is between the {}, ie. {colour: brown}
+* Property is the key in the declaration key value pair
+* Value is the value in the key value pair 
+
+**Fonts:**
+* Prior to CSS3 only web-safe fonts could be used
+* CSS3 provides the @font-face rule which enables developers to use any fonts they choose 
+
+**Manage content flow (inline vs block):**
+* "Flow" is the filling of horizontal lines from left to right across the display, and separation of lines from top to bottom
+* Inline flow: Fills only as much width as required
+* Block flow: Fills as much width as is available 
+
+**Manage positioning of individual elements:**
+  * Default value of the position property is *static* (immediately after the document's previous element)
+  Float positioning:
+  * *Float Positioning* moves an element as far to the left or right as it is permitted, text then wraps around this element. 
+  * Simple columns are examples of float positioning (text would not overflow between columns however)
+  Note: you can generate lipsum in MS Word by typing =lorem() and pressing enter 
+  Absolute positioning:
+  * Element is excluded from the flow of the document
+  * It is instead placed in a "geometric position"  (fixed distance from top and side)
+  * Position does not vary with scrolling ie. header and footer 
+
+**Manage content overflow:**
+* Overflow is the management of elements that exceed their allotted *bounding box*
+* A bounding box a rectangle that an element is assigned to fit within
+Scrolling overflow:
+* In scrolling overflow an element's content will not exceed it's bounding box
+* The extra content will be accessed by scrolling within the bounding box
+* {overflow:scroll} is used to access this property value 
+Visible and hidden overflow:
+* Visible overflow writes over the content that follows it
+* Hidden overflow makes overflow invisible 
+
 * Basic CSS styling
 
-Arrange UI content:
+### Arrange UI content
+**Designing UI with CSS:**
+* Relative positioning was used traditionally to achieve flexibility in website design but does not work well for mobile
+* Instead a combination of absolute positioning and flexible boxes work much better for mobile UI 
+
+**Browser Compatibility:**
+* *Vendor prefixes* are used to work around browsers supporting different CSS3 properties:
+  * -ie- - Internet explorer
+  * -moz- - Mozilla Firefox
+  * -o- - Opera 
+  * -webkit- - Chrome and Safari
+
+**Flexbox:**
+* Hold text, images, toolbars, menus and other content 
+* Used for simpler layouts
+* Browser automatically adjusts the size of the box depending on the viewport
+* Based on the box model:
+  * Margin: transparent and sits at the outermost edge of the box, providing space between the box and other boxes in the document 
+  * Boarder: surrounds the box itself. Can be coloured or patterned
+  * Padding: the space between the element and the boarder, usually taking on the same colour as the element's background 
+* Flexbox is similar to block layout but dows not use columns or floats. 
+* Flexboxes resize both horizontally and vertically
+* Has two flavours:
+  * flexbox: stet the flexbox as a block-level element 
+  * inline-flexbox: sets the flexbox as an inline-level element 
+
+
+**Grid layouts:**h
+* Simply rows and columns that control the layout in an HTML document
+* Give greater control over complex layouts 
+* Offers modularity so you can easily drop elements into a grid. 
+* More flexible and easier thant HTML tables 
+
+
 * Proportional scaling, free scale, flexbox, grid
 * Order and arrange content
 * App templates
