@@ -312,7 +312,7 @@ Visible and hidden overflow:
 
 **Browser Compatibility:**
 * *Vendor prefixes* are used to work around browsers supporting different CSS3 properties:
-  * -ie- - Internet explorer
+  * -ms- - Internet explorer
   * -moz- - Mozilla Firefox
   * -o- - Opera 
   * -webkit- - Chrome and Safari
@@ -330,20 +330,61 @@ Visible and hidden overflow:
 * Has two flavours:
   * flexbox: stet the flexbox as a block-level element 
   * inline-flexbox: sets the flexbox as an inline-level element 
+* Flexbox properties:
+  * **flex**: makes child boxes flexible by height and width 
+  * **flex-align**: Sets the default alignment for child boxes, if the orientation of the parent box is horizontal flex-align determines the vertical alignment of the child boxes and vise versa  
+  * **flex-direction**: Controls the direction of child boxes in the parent box
+  * **flex-flow**: Sets the flex-direction and flex-wrap properties at the same time 
+  * **flex-item-align**: Overrides te default alignment of child boxes styled with the flex-align property 
+  flex-line-pack: Sets child box alignment within the parent box when extra space is present
+  * **flex-order**: Assigns child boxes to groups and controls the order in which they appear in a layout, beginning with the lowest numbered group 
+  * **flex-pack**: justifies the alignment of child boxes within a flexbox to ensure all whitespace in the parent box is filled 
+  * **flex-wrap**: determines whether child boxes automatically create a new line and wrap ono it or overflow the flexbox 
 
+ 
 
-**Grid layouts:**h
+**Grid layouts:**
+* {display: grid/inline-grid}
 * Simply rows and columns that control the layout in an HTML document
 * Give greater control over complex layouts 
 * Offers modularity so you can easily drop elements into a grid. 
 * More flexible and easier thant HTML tables 
+* Child elements of a grid are called grid items, which are positioned acording to:
+  * **Grid tracks** - The columns and rows of the grid; defined using the *grid-rows* and *grid-columns properties
+  * **Grid lines** - The horizontal and vertical lines that divide the grid
+  * **Grid cells** - The logical space used to layout grid items
+* Columns and rows can have a fixes size in px, a fractional size in fr or be set to auto scale
+* Grid properties:
+  * **grid-columns/grid-rows**: Specifies parameters for one or more columns or rows in a grid 
+  * **grid-template**: Provides a visualization of the grid element's structure and defines the grid cells 
+  * **grid-cell**: Positions a child item within a named gridcell 
+  * **grid-column/grid-cell**: Positions child items in a grid 
+  * **grid-column-span/grid-column-span**: Defines the dimensions of a grid by specifying the distance (in lines) from the starting line to ending line 
+  * **grid-column-sizing/grid-row-sizing**: Changes the size of implicit columns or rows, which are auto-sized by default
+  * **grid-flow**: creates additional columns otr tows as needed to accommodate content 
+  **grid-column-align/grid-row-align**: controls a child item's alignment within a cell 
+Grid Templates:
+* A grid template uses alphabetical characters to represent the position of items in a grid. 
+* {grid-template: "abcd"}
+  
+### Manage the flow of content by using CSS:
+**CSS Regions:**
+* Regions manage the flow of content between  discontiguous areas of the page (areas that don't touch)
+* In the event of overflow from one region of the HTML document the remaining content will automatically flow to the next region 
+* This makes document more responsive and accessible for screen magnifiers 
+Flow-into and flow-from: 
+* To implement CSS regions both a content source and content containers need to be specified
+* This is achieved with the *flow-into* and *flow-from* properties
+* *Content source* 
+  * May be one or more blocks of text in the shame or a separate HTML file, this is referred to as a *content stream*
+  * {flow-into: main} - content sources are assigned by specifying where content should be flowed to 
+  * The value of the property ("main" in the above example) is called a *named flow*
+* *Content containers:* 
+  * The areas into which the content flows 
+  * {flow-from: main} - creates the content container by referencing the *named flow*
+* Both flow-into and flow-from can be assigned to multiple elements referencing the same named flow, The content will be pulled from the source in the order in which it appears in the DOM. This is known as the *document order*
 
 
-* Proportional scaling, free scale, flexbox, grid
-* Order and arrange content
-* App templates
-
-Manage the flow of content by using CSS
 * Regions and using regions to flow text content between multiple sections
 * Content source, content container, dynamic flow, flow-into, flow-from, msRegionUpdate, msRegionOverflow, msGetRegionContent
 * Columns and hyphenations, optimising readability 
