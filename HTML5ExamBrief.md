@@ -99,12 +99,12 @@
 There are several new text related elements compared to HTML4 such as: command, mark, time, meter and progress. Whilst beasefont, center, font and strike have been depreciated. 
 
 **Text Elements:**
-* b - (bold) should be used to offset text without conveying importance ie product names as actionable items
-* i - (italic) is used for alternate voice or mood 
-* strong - denotes strong importance 
-* em - indicates emphatic stress 
-* small - is used for smallprint like copywrite 
-* mark - highlights a section of text 
+* `<b>` - (bold) should be used to offset text without conveying importance ie product names as actionable items
+* `<i>` - (italic) is used for alternate voice or mood 
+* `<strong>` - denotes strong importance 
+* `<em>` - indicates emphatic stress 
+* `<small>` - is used for smallprint like copywrite 
+* `<mark>` - highlights a section of text 
 
 **Deprecated Elements:**
 * acronym - Defines acronyms in HTML 4 that can be spoken as if they are a single
@@ -140,12 +140,14 @@ Figure:
 * figcaption adds a caption to the figure
 
 Canvas:
-* canvas - creates a container for graphics, using JS to draw the graphics dynamically 
+* `<canvas id="canvas" width="150" height="150">` - creates a container for graphics, using JS to draw the graphics dynamically 
+* `var canvas=document.getElementById('canvas')` - link canvas element to script 
+* `var ctx=canvas.getContext('2D')` - creates canvas drawing tool 
 * canvas - can be used to create online games,rotating photo galleries and stocktickers similar to flash
 * A canvas is first designed with attribute requiring the id attribute to be added to the DOM
 * This element can be the retrieved using JS and manipulated within a function using the context api
 * Canvas functions:
-  * fillText - draws text 
+  * `fillText` - draws text 
 
 SVG:
 * Scalable vector graphics (SVG) is a language for describing 2D graphics in (XML) 
@@ -160,126 +162,145 @@ Canvas vs SVG:
 * Canvas for realtime data output 
 
 Other tags:
-* meter - displays a colored bar
+* `<meter>` - displays a colored bar
 
 **To play media (video and audio):**
 * video is used alongside the src attribute to include video files in HTML, height and width can also be specified 
-* Other attributes inclue:
-  * poster: displays a static img before the video loads
-  * autoplay: Start playing the video automatically on page load
-  * controls: Displays a play pause vol etc.
-  * loop: repeats the video 
+* Other attributes include:
+  * `poster`: displays a static img before the video loads
+  * `autoplay`: Start playing the video automatically on page load
+  * `controls`: Displays a play pause vol etc.
+  * `loop`: repeats the video 
 * Both file format and codec should be specified 
 
 **Audio Tags:**
-* audio tag is used to incorporate audio 
+* `<audio>` tag is used to incorporate audio 
 * Multiple formats should be specified to ensure compatibility 
+* Attributes:
+  * `controls` - specific controls are provided by the browser 
+  * `src=URL` 
 
 **Touch Controls**
-* Diabling certain touch controls is performed in meta tags:
-  * user-scalable ="no" - disables touch zooming 
+* Disabling certain touch controls is performed in meta tags:
+  * `user-scalable ="no"` - disables touch zooming 
+
+**Browser Compatibility:**
+* https://caniuse.com - to check what browsers support a certain feature
+* Polyfill is a javascript programme that helps with backwards browser compatibility in the case that the browser does not support a given feature 
 
 ### To organise content and forms
 **Understanding semantic HTML:**
 * Semantic markup uses taf names that are intuitive, aiding building and modifying HTML documents and interpretation by web browsers
 * Note: class and id are *global attributes* which can be used with any element 
 * Example: instead of using div elements with classes and ids use specific tags for that element ie header, nav, aside 
+* Benefits include:
+  * Autocomplete
+  * Formatting
+  * Screen readers
+  * Mobile browsing input (changing keyboard)
 
 **Using tags to add structure:**
 * Examples of semantic structural elements:
-  * address - Defines an area for contact information for a page or section
-  * article - Defines an article, such as a magazine or newspaper article, blog post, or
-  similar content
-  * aside - Defines content that’s separate from but related to the page content; similar to a sidebar in book chapters and magazine articles
-  * details - Contains additional details pertinent to text around it; creates an interactive widget a user can display or hide
-  * footer - Defines a footer for a document or section; may include the document author, contact information, copyright information, and links to terms of use
-  * header - Defines a header for a document or section; may contain introductory content or navigation links
-  * hgroup - Groups headings and subheadings (using the h1 to h6 tags) for multi-level headings
-  * nav - Defines a block of navigation links
-  * section - Defines a section in a document, such as chapters, parts of a thesis, or parts of a Web page whose content is distinct from each other
-  * summary - Defines a visible heading for a details element; user can click to display or hide information
-  * wbr - Defines a possible line break; when a word is very long, or you’re concerned the browser will break a line at the wrong place
-  * sub - defines subscript text
+  * `<address>` - Defines an area for contact information for a page or section
+  * `<article>` - Defines an article, such as a magazine or newspaper article, blog post, or
+  similar content, suitable to be syndicated (transferred) somewhere else 
+  * `<aside>` - Defines content that’s separate from but related to the page content; similar to a sidebar in book chapters and magazine articles
+  * `<details>` - Contains additional details pertinent to text around it; creates an interactive widget a user can display or hide
+  * `<footer>` - Defines a footer for a document or section; may include the document author, contact information, copyright information, and links to terms of use
+  * `<header>` - Defines a header for a document or section; may contain introductory content or navigation links
+  * `<hgroup>` - Groups headings and subheadings (using the h1 to h6 tags) for multi-level headings
+  * `<nav>` - Defines a block of navigation links
+  * `<section>` - Defines a section in a document, such as chapters, parts of a thesis, or parts of a Web page whose content is distinct from each other
+  * `<summary>` - Defines a visible heading for a details element; user can click to display or hide information
+  * `<wbr>` - Defines a possible line break; when a word is very long, or you’re concerned the browser will break a line at the wrong place
+  * `<sub>` - defines subscript text
+  * `<mark>` - highlight an section of text
+  * `<time>` - denotes a date or time
+
 
 **Using tags to create tables and lists:**
 Tables:
 * Tables display information in grids]
 * Tables are created with the following tags:
-  * table
-  * tr - table row
-  * th - column header
-  * td - cell
+  * `<table>`
+  * `<tr>` - table row
+  * `<th>` - column header
+  * `<td>` - cell
   * caption can be used on tables
-  * thead, tfoot, tbody - used for lond tables which require scrolling, the content in thead and tbody will stay on screen whilst tbody will scroll between them 
+  * `<thead>`, `<tfoot>`, `<tbody>` - used for long tables which require scrolling, the content in thead and tbody will stay on screen whilst tbody will scroll between them 
 
 
 Lists:
 * Lists can be ordered or unordered 
-* Entries use li
+* Entries use `<li>`
 * Ordered lists:
-  * ol - Orders using numbers by default 
+  * `<ol>` - Orders using numbers by default 
   * Has attributes:
-    * reversed
-    * start number
-    * type - kind of marker such as letters or numerals 
+    * `reversed`
+    * `start` number
+    * `type` - kind of marker such as letters or numerals 
 
 * Unordered lists:
-  * ul - Displays a bulleted list 
-  * Has a type attribute that denotes the bullet style 
+  * `<ul>` - Displays a bulleted list 
+  * Has a `type` attribute that denotes the bullet style 
 
 * Definition list:
-  * dl - Desplays items with their definitions below them and indented
-  * dt - Denotes each term in the item
-  * dd - Denotes each description
+  * `<dl>` - Displays items with their definitions below them and indented
+  * `<dt>` - Denotes each term in the item
+  * `<dd>` - Denotes each description
 
 ### Input and Validation
 **Understanding input and forms:**
 form Attributes:
-* accept-charset=character_set - Specifies a set of character encodings the server accepts
-* action=URL - Specifies the Web address to which form data is sent
-* autocomplete="on"/"off" - Specifies whether autocomplete is on or off
-* enctype - application/x-www, form-urlencoded, multipart/form-data,  text/ plain -Specifies the encoding type for form data when submitting the data to a server; used only for method="post"
-* method="GET"/"Post" - specifies the http transmission method used when sending form data
-* name=TEXT
-* novalidate 
+* `accept-charset=character_set` - Specifies a set of character encodings the server accepts
+* `action=URL` - Specifies the Web address to which form data is sent
+* `autocomplete="on"/"off"` - Specifies whether autocomplete is on or off
+*` enctype - application/x-www, form-urlencoded, multipart/form-data,  text/ plain` -Specifies the encoding type for form data when submitting the data to a server; used only for method="post"
+*` method="GET"/"Post"` - specifies the http transmission method used when sending form data
+* `name=TEXT`
+* `novalidate` 
 
 input attributes:
-* pattern - matches against regex
-* placeholder - displays greyed out text
-* type = "file" - for file upload 
+* `pattern` - matches against regex
+* `required` - requires entry 
+* `placeholder` - displays greyed out text
+* `type =`:
+  * `file` - file upload
+  * `email`
+  * `text`
+  * `date`
+  * `datalist` - dropdown or text input 
 
 ### Touch input:
 * When a touch event is received the *target* property of each touch item in the *touchList* represents the DOM element that was touched
-
 * Resistive touch is best for use with gloves
-
 
 ## CSS: Formatting the user interface (20- 25%)
 ### Understand the core CSS concepts:
 **Separate presentation from content:**
 * the *link* tag is used to link html to CSS
 * *link* requires the follow attributes:
-  * href - URL to the .css file
-  * rel = "stylesheet"
-  * type = "text/css"
+  * `href` - URL to the .css file
+  * `rel = "stylesheet"`
+  * `type = "text/css"`
 * Standard practice is to link to separate stylesheets although inline styling is acceptable in small projects 
 * "Separation of content and style"
-* *@import* is used to embed one css file in another 
+* `@import` is used to embed one css file in another 
 
 **Selectors and Declarations:**
-* selector selects the element to be styles ie p, #header, .user-form
-* Declaration is what is between the {}, ie. {colour: brown}
-* Property is the key in the declaration key value pair
-* Value is the value in the key value pair 
+* *Selector* selects the element to be styles ie `p, #header, .user-form`
+* *Declaration* is what is between the {}, ie. `{colour: brown}`
+* *Property* is the key in the declaration key value pair
+* *Value* is the value in the key value pair 
 
 **Fonts:**
 * Prior to CSS3 only web-safe fonts could be used
 * CSS3 provides the @font-face rule which enables developers to use any fonts they choose 
 
 **Manage content flow (inline vs block):**
-* "Flow" is the filling of horizontal lines from left to right across the display, and separation of lines from top to bottom
-* Inline flow: Fills only as much width as required
-* Block flow: Fills as much width as is available 
+* *Flow* is the filling of horizontal lines from left to right across the display, and separation of lines from top to bottom
+* *Inline flow*: Fills only as much width as required
+* * Block flow*: Fills as much width as is available 
 
 **Manage positioning of individual elements:**
   * Default value of the position property is *static* (immediately after the document's previous element)
@@ -295,18 +316,17 @@ Absolute positioning:
   * Position does not vary with scrolling ie. header and footer 
 
 **Manage content overflow:**
-* Overflow is the management of elements that exceed their allotted *bounding box*
+* *Overflow* is the management of elements that exceed their allotted *bounding box*
 * A bounding box a rectangle that an element is assigned to fit within
 
 Scrolling overflow:
 * In scrolling overflow an element's content will not exceed it's bounding box
 * The extra content will be accessed by scrolling within the bounding box
-* {overflow:scroll} is used to access this property value 
+* `{overflow:scroll}` is used to access this property value 
 
 Visible and hidden overflow:
 * Visible overflow writes over the content that follows it
 * Hidden overflow makes overflow invisible 
-
 * Basic CSS styling
 
 ### Arrange UI content
@@ -316,10 +336,10 @@ Visible and hidden overflow:
 
 **Browser Compatibility:**
 * *Vendor prefixes* are used to work around browsers supporting different CSS3 properties:
-  * -ms- - Internet explorer
-  * -moz- - Mozilla Firefox
-  * -o- - Opera 
-  * -webkit- - Chrome and Safari
+  * `-ms-` - Internet explorer
+  * `-moz-` - Mozilla Firefox
+  * `-o-` - Opera 
+  * `-webkit-` - Chrome and Safari
 
 **Flexbox:**
 * Hold text, images, toolbars, menus and other content 
@@ -335,42 +355,39 @@ Visible and hidden overflow:
   * flexbox: stet the flexbox as a block-level element 
   * inline-flexbox: sets the flexbox as an inline-level element 
 * Flexbox properties:
-  * **flex**: makes child boxes flexible by height and width 
-  * **flex-align**: Sets the default alignment for child boxes, if the orientation of the parent box is horizontal flex-align determines the vertical alignment of the child boxes and vise versa  
-  * **flex-direction**: Controls the direction of child boxes in the parent box
-  * **flex-flow**: Sets the flex-direction and flex-wrap properties at the same time 
-  * **flex-item-align**: Overrides te default alignment of child boxes styled with the flex-align property 
+  * `flex`: makes child boxes flexible by height and width 
+  * `flex-align`: Sets the default alignment for child boxes, if the orientation of the parent box is horizontal flex-align determines the vertical alignment of the child boxes and vise versa  
+  * `flex-direction`: Controls the direction of child boxes in the parent box
+  * `flex-flow`: Sets the flex-direction and flex-wrap properties at the same time 
+  * `flex-item-align`: Overrides te default alignment of child boxes styled with the flex-align property 
   flex-line-pack: Sets child box alignment within the parent box when extra space is present
-  * **flex-order**: Assigns child boxes to groups and controls the order in which they appear in a layout, beginning with the lowest numbered group 
-  * **flex-pack**: justifies the alignment of child boxes within a flexbox to ensure all whitespace in the parent box is filled 
-  * **flex-wrap**: determines whether child boxes automatically create a new line and wrap ono it or overflow the flexbox 
-
- 
+  * `flex-order`: Assigns child boxes to groups and controls the order in which they appear in a layout, beginning with the lowest numbered group 
+  * `flex-pack`: justifies the alignment of child boxes within a flexbox to ensure all whitespace in the parent box is filled 
+  * `flex-wrap`: determines whether child boxes automatically create a new line and wrap ono it or overflow the flexbox 
 
 **Grid layouts:**
-* {display: grid/inline-grid}
+* `{display: grid/inline-grid}`
 * Simply rows and columns that control the layout in an HTML document
 * Give greater control over complex layouts 
 * Offers modularity so you can easily drop elements into a grid. 
 * More flexible and easier thant HTML tables 
-* Child elements of a grid are called grid items, which are positioned acording to:
-  * **Grid tracks** - The columns and rows of the grid; defined using the *grid-rows* and *grid-columns properties
-  * **Grid lines** - The horizontal and vertical lines that divide the grid
-  * **Grid cells** - The logical space used to layout grid items
+* Child elements of a grid are called grid items, which are positioned according to:
+  * `Grid tracks` - The columns and rows of the grid; defined using the *grid-rows* and *grid-columns properties
+  * `Grid lines` - The horizontal and vertical lines that divide the grid
+  * `Grid cells` - The logical space used to layout grid items
 * Columns and rows can have a fixes size in px, a fractional size in fr or be set to auto scale
 * Grid properties:
-  * **grid-columns/grid-rows**: Specifies parameters for one or more columns or rows in a grid 
-  * **grid-template**: Provides a visualization of the grid element's structure and defines the grid cells 
-  * **grid-cell**: Positions a child item within a named gridcell 
-  * **grid-column/grid-cell**: Positions child items in a grid 
-  * **grid-column-span/grid-column-span**: Defines the dimensions of a grid by specifying the distance (in lines) from the starting line to ending line 
-  * **grid-column-sizing/grid-row-sizing**: Changes the size of implicit columns or rows, which are auto-sized by default
-  * **grid-flow**: creates additional columns otr tows as needed to accommodate content 
-  **grid-column-align/grid-row-align**: controls a child item's alignment within a cell 
+  * `grid-columns/grid-rows`: Specifies parameters for one or more columns or rows in a grid 
+  * `grid-template`: Provides a visualization of the grid element's structure and defines the grid cells 
+  * `grid-cell`: Positions a child item within a named gridcell 
+  * `grid-column/grid-cell`: Positions child items in a grid 
+  * `grid-column-span/grid-column-span`: Defines the dimensions of a grid by specifying the distance (in lines) from the starting line to ending line 
+  * `grid-column-sizing/grid-row-sizing`: Changes the size of implicit columns or rows, which are auto-sized by default
+  * `grid-flow`: creates additional columns otr tows as needed to accommodate content 
 
 Grid Templates:
 * A grid template uses alphabetical characters to represent the position of items in a grid. 
-* {grid-template: "abcd"}
+* `{grid-template: "abcd"}`
   
 ### Manage the flow of content by using CSS:
 **CSS Regions:**
@@ -383,11 +400,11 @@ Flow-into and flow-from:
 * This is achieved with the *flow-into* and *flow-from* properties
 * **Content source:**
   * May be one or more blocks of text in the shame or a separate HTML file, this is referred to as a *content stream*
-  * {flow-into: main} - content sources are assigned by specifying where content should be flowed to 
+  * `{flow-into: main}` - content sources are assigned by specifying where content should be flowed to 
   * The value of the property ("main" in the above example) is called a *named flow*
 * **Content containers:** 
   * The areas into which the content flows 
-  * {flow-from: main} - creates the content container by referencing the *named flow*
+  * `{flow-from: main}` - creates the content container by referencing the *named flow*
 * Both flow-into and flow-from can be assigned to multiple elements referencing the same named flow, The content will be pulled from the source in the order in which it appears in the DOM. This is known as the *document order*
 
 Overflow:
@@ -528,40 +545,78 @@ Animation:
 * SVG filter effects
 * Canvas
 
+**Media queries:**
+* Allows obtaining information about the user's system to create more responsive web applications 
+* `@media (max-width:900px){}`
+
 ## JavaScript: Writing code (30-35%)
-Manage and maintain JS:
-* Create and use functions
-* jQuery
-* 3rd party libraries 
+### About JS:
+* *ECMAScript*: It is a standard for JavaScript, standardized by EMCA
+* *Transpilers*: Used to create backwards compatible versions of programmes that will run on old browsers 
+* *V8*: Engine inside the browser that runs JS, made by google and used by most if not all browsers 
+* Variable names cannot start with:
+  * Numbers
+  * punctuation (apart from _)
 
-Update the UI by using JS:
-* Locate/access elements
-* Listen and respond to events
-* Show and hide elements
-* Update the content of elements 
-* Add elements 
+### Manage and maintain JS
+**Create and use functions:**
 
-Code animations using JS:
-* Use animation
-* Manipulate the canvas 
-* Work with images
-* Shapes
-* Other graphics
+**jQuery:**
 
-Access data access using JS:
-* Send and receive data
-* Transmit complex objects and parsing 
-* load and save files 
-* App cache
-* Data types 
-* Forms 
-* Cookies 
-* Local storage 
+**3rd party libraries:**
 
-Respond to the touch interface:
-* Gestures
-* How to capture and respond to gestures
+### Update the UI by using JS
+**Locate/access elements:**
 
-Access device and operation system resources 
-* In memory resources (ie. contact lists and calender)
-* Hardware capabilities (ie GPS accelerometer and camera)
+**Listen and respond to events:**
+
+**Show and hide elements:**
+
+**Update the content of elements:** 
+
+**Add elements:** 
+
+### Code animations using JS
+**Use animation:**
+**Manipulate the canvas:**
+
+**Work with images:**
+
+**Shapes:**
+
+**Other graphics:**
+
+### Access data access using JS:
+**Send and receive data:**
+
+**Transmit complex objects and parsing:** 
+* JSON: 
+  * JavaScript Object Notation 
+  * `JSON.stringify(object)` turns object into json
+  * `JSON.parse(str)` - converts JSON into object 
+
+**Load and save files:**
+  * Local storage - Persistent, stores over multiple session
+  * Session storage - Is deleted after the session ends 
+
+**App cache:**
+
+**Data types:** 
+
+**Forms:** 
+
+**Cookies:**
+* Useful for credentials, auth tokens and tracking 
+
+**Local storage:** 
+
+### Respond to the touch interface
+**Gestures:**
+
+**How to capture and respond to gestures:**
+
+### Access device and operation system resources 
+
+**In memory resources (ie. contact lists and calender):**
+
+**Hardware capabilities (ie GPS accelerometer and camera):**
