@@ -550,37 +550,72 @@ Animation:
 * `@media (max-width:900px){}`
 
 ## JavaScript: Writing code (30-35%)
+**Useful Snippets:**
+* `$(document).ready(function(){})` - Once HTML document loads, execute 
+* `getElementById()` - Method to fetch any element in the DOM
 ### About JS:
 * *ECMAScript*: It is a standard for JavaScript, standardized by EMCA
 * *Transpilers*: Used to create backwards compatible versions of programmes that will run on old browsers 
 * *V8*: Engine inside the browser that runs JS, made by google and used by most if not all browsers 
-* Variable names cannot start with:
-  * Numbers
-  * punctuation (apart from _)
+* Variable names:
+  * Must start with a letter, `$` or `_`
+  * Must only consist of numbers, letters, `$` or `_`
+  * Cannot be the same as other identifiers already used in JS
 
 ### Manage and maintain JS
 **Create and use functions:**
+* Can assign functions with either:
+  * `function(args){}` - Standard notation
+  * `(args) =>` - Arrow function
 
 **jQuery:**
+* jQuery is a JavaScript *library*
+* `<script src="link to jQuery lib">` to include jQuery
 
 **3rd party libraries:**
 
 ### Update the UI by using JS
 **Locate/access elements:**
+* `getElementById()` - Method to fetch any element in the DOM
+* `.getElementsByTagName("p")` - Get a list of element with the `<p>` tag
+* This can also be used to fetch user input by calling `.value` after fetching an input element 
+* `var value = getElementById("input1").value;`
+
 
 **Listen and respond to events:**
+* *Event* - Actions that trigger other actions to occur 
+* *Event handler* - a function that listens for events and can be used to trigger other functions ie.  `onClick = doSomething()`
+* The following are events that can be responded to:
+  * Form submission
+  * Key strokes
+  * Mouse input inc. movements
+  * Selection of an element
+  * An element has finished loading (`onLoad`)
 
 **Show and hide elements:**
+* Information can be displayed or hidden using the HTML display attribute
+* Setting `display = none` will hide an element 
 
 **Update the content of elements:** 
+* Use `innerHTML` property to update the content of HTML elements or insert new content 
 
 **Add elements:** 
+* `createElement()` 
+* `appendChild()`
+* `insertBefore()`
 
 ### Code animations using JS
 **Use animation:**
+* Can be generated recursively using `setTimeout(a, rate)` as the last statement of function "`a`" 
+
 **Manipulate the canvas:**
+* JavaScript can display elements on an event, `createElement` method works well for this 
+* JavaScript can generate complex graphics and animations by interfacing with `<canvas>` elements
+* `getElementById()` to get canvas element
+* `canvas.getContext` to create the canvas object 
 
 **Work with images:**
+* 
 
 **Shapes:**
 
@@ -588,6 +623,11 @@ Animation:
 
 ### Access data access using JS:
 **Send and receive data:**
+* `XMLHttpRequest` API (sometimes abbreviated as XHR) enables the use of JS to pass data as stings between a client and the server 
+* `var xhr = new XMLHttpRequest();`:
+  * `xhr.open("GET", url, true)` - specifies the HTTP method for contacting the server 
+  * `xhr.send(data)` - sends data to the server 
+  
 
 **Transmit complex objects and parsing:** 
 * JSON: 
