@@ -304,11 +304,13 @@ input attributes:
 
 **Manage positioning of individual elements:**
   * Default value of the position property is *static* (immediately after the document's previous element)
-  Float positioning:
+
+Float positioning:
   * *Float Positioning* moves an element as far to the left or right as it is permitted, text then wraps around this element. 
   * Simple columns are examples of float positioning (text would not overflow between columns however)
   Note: you can generate lipsum in MS Word by typing =lorem() and pressing enter 
-  Absolute positioning:
+
+Absolute positioning:
   * Element is excluded from the flow of the document
   * It is instead placed in a "geometric position"  (fixed distance from top and side)
   * Position does not vary with scrolling ie. header and footer 
@@ -321,6 +323,7 @@ Scrolling overflow:
 * In scrolling overflow an element's content will not exceed it's bounding box
 * The extra content will be accessed by scrolling within the bounding box
 * `{overflow:scroll}` is used to access this property value 
+
 Visible and hidden overflow:
 * Visible overflow writes over the content that follows it
 * Hidden overflow makes overflow invisible 
@@ -381,7 +384,7 @@ Visible and hidden overflow:
   * `grid-column-span/grid-column-span`: Defines the dimensions of a grid by specifying the distance (in lines) from the starting line to ending line 
   * `grid-column-sizing/grid-row-sizing`: Changes the size of implicit columns or rows, which are auto-sized by default
   * `grid-flow`: creates additional columns otr tows as needed to accommodate content 
-  * `grid-column-align/grid-row-align`: controls a child item's alignment within a cell 
+
 Grid Templates:
 * A grid template uses alphabetical characters to represent the position of items in a grid. 
 * `{grid-template: "abcd"}`
@@ -391,25 +394,154 @@ Grid Templates:
 * Regions manage the flow of content between  discontiguous areas of the page (areas that don't touch)
 * In the event of overflow from one region of the HTML document the remaining content will automatically flow to the next region 
 * This makes document more responsive and accessible for screen magnifiers 
+
 Flow-into and flow-from: 
 * To implement CSS regions both a content source and content containers need to be specified
 * This is achieved with the *flow-into* and *flow-from* properties
-* *Content source* 
+* **Content source:**
   * May be one or more blocks of text in the shame or a separate HTML file, this is referred to as a *content stream*
   * `{flow-into: main}` - content sources are assigned by specifying where content should be flowed to 
   * The value of the property ("main" in the above example) is called a *named flow*
-* *Content containers:* 
+* **Content containers:** 
   * The areas into which the content flows 
   * `{flow-from: main}` - creates the content container by referencing the *named flow*
 * Both flow-into and flow-from can be assigned to multiple elements referencing the same named flow, The content will be pulled from the source in the order in which it appears in the DOM. This is known as the *document order*
 
-* Regions and using regions to flow text content between multiple sections
-* Content source, content container, dynamic flow, flow-into, flow-from, msRegionUpdate, msRegionOverflow, msGetRegionContent
-* Columns and hyphenations, optimising readability 
+Overflow:
+* In order for flow to work the dimensions of the region must be fixed 
+* How overflowing the last region is handled is defined by the `region-overflow` and `overflow` properties
 
-Manage the graphical interface by using CSS:
-* Graphics effects  (rounded corners, shadows, transparency,background gradients, typography, and Web Open Font Format)
-* 2D and 3D transformations (translate, scale, rotate, skew, and 3-D perspective transitions and animations)
+Microsoft's implementation:
+* Microsoft's implementation of CSS regions differs slightly
+* *iframes* are used, like mini boxes on a web page that can contain external content
+* The `-ms-` prefix must be used with the `flow-into` and `flow-from` properties 
+* iframes properties:
+  * `msRegionUpdate` - Allows dynamic manipulation of regions 
+  * `msRegionOverflow` - Handles content overflow, similar to the `region-overflow` property
+  * `msGetRegionContent` - A script method that returns an array of Range instances corresponding to the content from the region flow that is positioned in the region 
+
+**Using columns and hyphenation:**
+
+Columns: 
+* The following properties are used to create and manipulate CSS columns:
+  * `columns` - shorthand way of setting the number of columns and the column width in one declaration
+  * `column-count` - Sets the number of columns and element should be divided into
+  * `column-gap` - Sets the fap between columns, also known as the gutter
+  * `column-rule` - Creates a vertical line in the gap between columns and sets it's style
+  * `break-after` - Inserts a break after the generated column box 
+  * `break-before` - Inserts a break before the generated column box
+  * `break-inside` 
+  * `column-fill` - Specifies how to fill columns, balanced equally between them or filling sequentially 
+  * `column-span` - Specifies whether an element should span no columns or all columns 
+
+Hyphenation:
+* *Hyphenation* allows the proper breaking of words at the end of lines, avoiding the problem of long words wrapping to the next line
+* Controlled with the `hyphens` property:
+  * `auto` - Enables automatic hyphenation of words based on line-break opportunities within words or by "language-appropriate hyphenation resource"
+  * `manual` - Enables hyphenation of word based only on line-break opportunities 
+  * `none` - Prevents hyphenation 
+* Language must be declared with `<html lang="en">` in order for correct hyphenation to occur 
+* Vendor prefixes must be used with the hyphens property ie. `-moz-hyphens` (when this book was written anyway)
+* Microsoft provides additional hyphenation properties:
+  * `-ms-hyphenate-limit-zone` - Specifies the width of the trailing whitespace that can be left in a line before hyphenation occurs 
+  * `-ms-hyphenate-limit-chars` - Specifies the minimum number of characters in a word that my be hyphenated
+
+Exclusions:
+* A *positioned float* is a CSS construct that enables positioning of images, text and boxes and then wrap text around them.
+* Positioned floats achieved with *CSS exclusions*
+* CSS exclusions alow the precise positioning of a float, exact distance from the top, bottom, left or right of it's container
+* Exclusions are controlled with the following properties:
+  * `shape-outside` - Creates the general shape of an exclusion
+  * `shape-inside` - Modifies a shape's contents
+  * `wrap` - Shorthand method of setting `wrap-flow`, `wrap-margin` and `wrap-padding` properties
+  * `wrap-flow` - Specifies how exclusions affect inline content within block-level elements 
+  * `wrap-margin` - Provides and offset for the content inside and element 
+  * `wrap-padding` Provides a pad for content inside an element 
+  * `wrap-through` - Specifies how content should wrap around an exclusion element 
+
+### Manage the graphical interface by using CSS
+**Creating Graphical Effects** 
+Some new graphical effects to CSS3 are:
+* `border-radius` 
+* `box-shadow`
+* `opacity`
+* `linear-gradient`
+* `radial-gradient`
+
+Rounded corners:
+* `border-radius` is used to create rounded corners around elements
+* It's value can be in px, em or &
+
+Shadows:
+* `box-shadow` creates a *drop shadow* behind an element 
+* `box-shadow: h-shadow v-shadow blur spread color inset;` is the syntax used:
+  * `h-shadow` - horizontal position of the shadow in relation to the box
+  * `v-shadow` - as above but vertical 
+  * `inset` - moves shadow from the outside to the inside of the box 
+
+Transparency:
+* `opacity: value`
+* Where value is a float between 0.0 and 1.0
+
+Gradient:
+* Several different types:
+  * `linear-gradient(angle, color start, color end)` - Creates a gradient from top to bottom (default), side to side or corner to corner, specified as and angle in args
+  * `radial-gradient(position,size and shape,color stops)` - Gradient radiates out from a central point 
+  * `repeating-linear-gradient` - Straight bands of gradient colour 
+  * `repeating-linear-gradient` - Circular bands of gradient colour 
+* Can be applied to the `background` property 
+* Supports colour interpolation in the RGBA space to avoid banding 
+
+**Web Open Font Format (WOFF):**
+* A way to enhance UI with any available or custom made font 
+* Previously limited to *web safe* fonts
+* To use WOFF host fonts on a webserver or use a web font service 
+* WOFF files are compressed into:
+  * True Type
+  * OpenType
+  * Open Font Format
+* `@font-face {
+    font-family:"font-name";
+    src: url("URL");
+  }`
+
+**2D and 3D transformations**
+* `transform` property can:
+  * translate
+  * scale
+  * rotate
+  * skew
+  * spin 2D and 3D elements 
+* Can have the following values:
+  * `matrix (n,n,n,n,n,n)` - Specifies a 2D transformation with a 6 value matrix
+  * `matrix (n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)` - Specifies a 3D transformation with a 16 (4x4) value matrix 
+  * `perspective(n)` - Specifies a perspective view for a 3D elements that's been transformed 
+  * `rotate(angle)` - Rotates in 2D
+  * `rotate3D(x,y,z,angle)` - Rotates in 3D 
+  * `rotateX(angle)/rotateY(angle)/rotateZ(angle)` - Rotates in 3D along the specified angle 
+  * `scale(x,y)` - Scales in 2D
+  * etc..
+
+3D perspective:
+* *3D Perspective* - in this context it is how the browser renders the depth of a 3D transformed element 
+* `perspective` takes a number value (1 to 1000), with lower values creating a more pronounced effect  
+
+Transitions:
+* A change of an element from one style to another 
+* Created with the following properties:
+  * `transition` - Shorthand way to specify settings for the following properties at once
+  * `transition-property` - Specifies the CSS properties that will be transitioned
+  * `transition-delay` - Specifies the amount of time after the value changing and the transition starting, (s or ms)
+  * `transition-duration` - Length of transition (s or ms)
+  * `transition-timing-function` - The speed curve of the transition effect (default: `ease`)
+
+Animation:
+* Like transitions, animations affect CSS properties and transformations 
+* The difference being that in animations you specify *keyframes* a construct that enables changing values anywhere within the animation
+* `@keyframes fadeout{from{opacity:1; to {opacity:0;}}`
+, transitions and animations:
+
+(translate, scale, rotate, skew, and 3-D perspective transitions and animations)
 * SVG filter effects
 * Canvas
 
