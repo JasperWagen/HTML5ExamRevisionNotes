@@ -148,11 +148,13 @@ Canvas:
 * This element can be the retrieved using JS and manipulated within a function using the context api
 * Canvas functions:
   * `fillText` - draws text 
+  * `clearRect` - blanks out a rectangular pattern in the canvas 
 
 SVG:
 * Scalable vector graphics (SVG) is a language for describing 2D graphics in (XML) 
 * XML is a cousin to HTML
 * Main benefit is flexibility as vector graphics scale to fit the viewport 
+* Filters can be defined within the `<defs>` tag within the `<svg>` element 
 
 Canvas vs SVG:
 * If the drawing is small use canvas
@@ -190,7 +192,7 @@ Other tags:
 
 ### To organise content and forms
 **Understanding semantic HTML:**
-* Semantic markup uses taf names that are intuitive, aiding building and modifying HTML documents and interpretation by web browsers
+* Semantic markup uses taf names that are intuitive, aiding building and modifying HTML documents and interpretation by web browsers, allowing for custom features 
 * Note: class and id are *global attributes* which can be used with any element 
 * Example: instead of using div elements with classes and ids use specific tags for that element ie header, nav, aside 
 * Benefits include:
@@ -211,7 +213,7 @@ Other tags:
   * `<hgroup>` - Groups headings and subheadings (using the h1 to h6 tags) for multi-level headings
   * `<nav>` - Defines a block of navigation links
   * `<section>` - Defines a section in a document, such as chapters, parts of a thesis, or parts of a Web page whose content is distinct from each other
-  * `<summary>` - Defines a visible heading for a details element; user can click to display or hide information
+  * `<summary>` - Defines a visible heading for a details element; user can click to display or hide information contained within `<details>`
   * `<wbr>` - Defines a possible line break; when a word is very long, or you’re concerned the browser will break a line at the wrong place
   * `<sub>` - defines subscript text
   * `<mark>` - highlight an section of text
@@ -251,6 +253,7 @@ Lists:
 
 ### Input and Validation
 **Understanding input and forms:**
+* `Blob` - represents the contents of an uploaded file 
 form Attributes:
 * `accept-charset=character_set` - Specifies a set of character encodings the server accepts
 * `action=URL` - Specifies the Web address to which form data is sent
@@ -261,6 +264,7 @@ form Attributes:
 * `novalidate` 
 
 input attributes:
+* `maxLength` - controls how many chars can be input 
 * `pattern` - matches against regex
 * `required` - requires entry 
 * `placeholder` - displays greyed out text
@@ -270,6 +274,9 @@ input attributes:
   * `text`
   * `date`
   * `datalist` - dropdown or text input 
+* `multiple` - Allows multiple files or email addresses to be input into a single input control 
+
+
 
 ### Touch input:
 * When a touch event is received the *target* property of each touch item in the *touchList* represents the DOM element that was touched
@@ -313,7 +320,7 @@ Float positioning:
 Absolute positioning:
   * Element is excluded from the flow of the document
   * It is instead placed in a "geometric position"  (fixed distance from top and side)
-  * Position does not vary with scrolling ie. header and footer 
+  * Position will vary with scrolling 
 
 **Manage content overflow:**
 * *Overflow* is the management of elements that exceed their allotted *bounding box*
@@ -351,6 +358,7 @@ Visible and hidden overflow:
   * Padding: the space between the element and the boarder, usually taking on the same colour as the element's background 
 * Flexbox is similar to block layout but dows not use columns or floats. 
 * Flexboxes resize both horizontally and vertically
+* `display: flex` is defined on a parent element, it's children can then be manipulated with the flex box controls, suitable for displaying it's child divs side by side  
 * Has two flavours:
   * flexbox: stet the flexbox as a block-level element 
   * inline-flexbox: sets the flexbox as an inline-level element 
@@ -364,6 +372,8 @@ Visible and hidden overflow:
   * `flex-order`: Assigns child boxes to groups and controls the order in which they appear in a layout, beginning with the lowest numbered group 
   * `flex-pack`: justifies the alignment of child boxes within a flexbox to ensure all whitespace in the parent box is filled 
   * `flex-wrap`: determines whether child boxes automatically create a new line and wrap ono it or overflow the flexbox 
+  * `align-items: stretch`: Align the child boxes so that they are all the same hight or width as the largest item 
+  * `gap`: set the gap between boxes
 
 **Grid layouts:**
 * `{display: grid/inline-grid}`
@@ -384,6 +394,8 @@ Visible and hidden overflow:
   * `grid-column-span/grid-column-span`: Defines the dimensions of a grid by specifying the distance (in lines) from the starting line to ending line 
   * `grid-column-sizing/grid-row-sizing`: Changes the size of implicit columns or rows, which are auto-sized by default
   * `grid-flow`: creates additional columns otr tows as needed to accommodate content 
+  * `column-gap/row-gap`: controls the amount of spacing between cells 
+  * `justify-self`: Overrides the horizontal positioning of an element within it's container 
 
 Grid Templates:
 * A grid template uses alphabetical characters to represent the position of items in a grid. 
@@ -492,6 +504,9 @@ Gradient:
 * Can be applied to the `background` property 
 * Supports colour interpolation in the RGBA space to avoid banding 
 
+Pseudo Class Selectors:
+* `tr:hover` - selects the class tr on mouse over event 
+
 **Web Open Font Format (WOFF):**
 * A way to enhance UI with any available or custom made font 
 * Previously limited to *web safe* fonts
@@ -553,6 +568,8 @@ Animation:
 **Useful Snippets:**
 * `$(document).ready(function(){})` - Once HTML document loads, execute 
 * `getElementById()` - Method to fetch any element in the DOM
+* `setTimeoout()` - wait before executing a piece of code 
+
 ### About JS:
 * *ECMAScript*: It is a standard for JavaScript, standardized by EMCA
 * *Transpilers*: Used to create backwards compatible versions of programmes that will run on old browsers 
@@ -561,6 +578,9 @@ Animation:
   * Must start with a letter, `$` or `_`
   * Must only consist of numbers, letters, `$` or `_`
   * Cannot be the same as other identifiers already used in JS
+
+**Progressive WebApps:**
+* Can install website as an app as well as view through browser 
 
 ### Manage and maintain JS
 **Create and use functions:**
@@ -580,7 +600,6 @@ Animation:
 * `.getElementsByTagName("p")` - Get a list of element with the `<p>` tag
 * This can also be used to fetch user input by calling `.value` after fetching an input element 
 * `var value = getElementById("input1").value;`
-
 
 **Listen and respond to events:**
 * *Event* - Actions that trigger other actions to occur 
@@ -627,7 +646,6 @@ Animation:
 * `var xhr = new XMLHttpRequest();`:
   * `xhr.open("GET", url, true)` - specifies the HTTP method for contacting the server 
   * `xhr.send(data)` - sends data to the server 
-  
 
 **Transmit complex objects and parsing:** 
 * JSON: 
@@ -640,23 +658,156 @@ Animation:
   * Session storage - Is deleted after the session ends 
 
 **App cache:**
+* Stores files required for loading websites on the users local machine 
+* Requires a manifest file that states the files that are to be cached this file has the suffix `.appcache`
+* The manifest file is specified in the `<html>` tag
+* The manifest file has 3 sections:
+  * CACHE: always saved to the cache
+  * NETWORK: files will only come from the network if they are not in cache (files that don't change much)
+  * FALLBACK: if not on network and not in cache 
 
 **Data types:** 
 
 **Forms:** 
 
 **Cookies:**
+* Small text files saved to a clients machine containing information about their browsing preferences 
+* 
 * Useful for credentials, auth tokens and tracking 
+* `document.cookie= "name=Fred";` - Sets a a cookie 
+* `setCookie("level", level_object.value, 10);` - Also sets a cookie 
 
 **Local storage:** 
 
 ### Respond to the touch interface
+**Types of touch interface:**
+* *Resistive*: thin layers flex and register touch when compressed. More sturdy, often found in hospitals and restaurants 
+* *Capacitive*: use electrodes to sense object touching the screen. Object must have conductive properties such as skin. Found in smartphones. 
+
 **Gestures:**
+* Tap: left click
+* Double tap: left double click 
+* Two finger tap: N/A
+* Press one finger and tap another: right click
+* Long tap: right-mouse click 
+* Selection/drag: mouse drag
+* Panning with inertia: Scrolling
+* Flick: move back or forward, pan up or down
+* Rotate: move two fingers in a circular motion 
+* Zoom 
 
 **How to capture and respond to gestures:**
+* `object.addEventListener(event, function)` - used to add an event listener to an element
+* Touch events:
+  * `touchstart`
+  * `touchmove`
+  * `touchend`
+  * `touchcancel`
 
+* Touch event listener functions:
+  * Dictates how the app reacts to touch events
+  * `evt.preventDefault` - used to stop the default browser reaction to a touch event such as scrolling 
+  * `evt.changedTouches` - list of changed touch points, accessed with `.pageX` and `.pageY`
+
+* Gesture events (multi-finger events):
+  * `gestureStart` - Every multi finger gesture registers a gestureStart
+  * `gestureChange` - When both fingers move around the screen 
+  * `gestureEnd` - Lifting both fingers from the screen 
+  * The returned event object can also contain the `scale` property which indicates how much two finger pinching occurred 
+
+* `changedTouches` represents a list that includes:
+  * Touch points that became active
+  * Touch points that have changed
+  * Touch points that have been removed 
+
+* `touchStart` is triggered on a new touch event, if more than one touch is registered at once then these are added to a list in `e.touches` where `e` is the event data 
+
+Touch Objects:
+* A *touch object* detects input from touch enabled devices, these are referenced in the *touchlist*
+* The touchlist registers all points of contact with the screen (one tap registers one entry, three registers three)
+* Touch objects have the following properties:
+  * `identifier` - UUID
+  * `target` - The HTML element affected
+  * `clientx/clienty` - Position, relative to the browser window 
+  *  `pagex/pagey` - Position, relative to the HTML document 
+  * `screenx/screeny` - Postion, relative to the screen 
+
+Touch Lists:
+* Each touch event registers three touch lists:
+  * `touches` - A list of all touch lists currently in contact with the screen 
+  * `targetTouches` - A list of all touch points currently in contact with the screen whose touchStart event occurred within the same target element 
+  * `changedTouches` - A list of all points that caused the current event to be fired, for example in a `touchend` event this was the finger that was removed
+
+Orientation:
+* Devices that can switch between landscape and portrait trigger a `orientationchanged` event 
+  
 ### Access device and operation system resources 
+**Webworkers:**
+* Allows async processes as to not slow down the UI for intensive processes and API calls 
+* `w = new Worker(functionCall)`
+* `worker.onmessage()` and `worker.postMessage()` function are used to communicate between the main program and the webworker 
 
+**WebSocket:**
+* Allows simultaneous, two way, connection between a client and a web server in order to exchange text and bin files 
+* *"Full duplex communication"*
+* This enables applications such as messaging apps where the client and server need to be notified quickly of any new content 
+* Three primary events:
+  * `onopen` - when a web socket opens
+  * `onmessage` - when a message has been received from the web server
+  * `onclose` - when a socket closes 
+
+* `ws` is used instead of `http` for secure web socket connections 
+* `var socket = WebSocket.open(URL)`
+* `socket.send(message)`
+
+**File API:**
+* Several interfaces for accessing files from local storage:
+  * `File` - Includes read-only information attributes about a file, such as name and media type 
+  * `FileList` - Array of file objects (upload a folder)
+  * `Blob` - Provides access to raw bin file data 
+  * `FileReader` - Provides methods to read and display data 
+
+**History API:**
+* This history of this tab session, how the backwards and forwards button functions
+* Effectively like the 'bread crumb trail'
+* Used by single page applications to allow back button to navigate within the website properly even if the page has not changed
+```HTML
+<p><button onclick="window.history.back()">Go Back</button></p>
+```
+* `window.history.pushState` - stores some state information
+* `window.history.popState` - restores previous state information 
+
+### Device and OS resources: 
 **In memory resources (ie. contact lists and calender):**
+* The following methods can be used on both `localStorage` and `sessionStorage` elements:
+  * `.setItem(key, value)`
+  * `.getItem(key)`
+  * `removeItem(key)`
+  * `clear();` - Removes all key/value pairs from the storage objects 
 
 **Hardware capabilities (ie GPS accelerometer and camera):**
+Geoloaction:
+* Useful for maps and location based content 
+* `var geo =navigator.geolocation` - creates geolocation object
+* `geo.getCurrentPosition(onSuccess, onError)` - One off call, Works on Async as permission has to be granted 
+* `onSuccess(position) = console.log(position.coords.latitude)`
+* `geo.watchPosition(onSuccess, onError)` - Will be called every time the user's location changes, this can be manipulated in browser by using the *sensor* tab 
+* `geo.clearWatch(watchNumber)` - Stops watching, needs to be provided a watch number unique to each `watchPosition`
+* Function returns immediately and will call either the success or failure functions supplied as parameters 
+
+Capturing Video:
+```javascript
+navigator.getUserMedia(constraints, function(stream){
+
+  let video = document.getElementById('mirror')
+
+  video.srcObject = stream
+})
+```
+* The `capture` attribute of the `<input>` tag allows capture from a users camera or microphone 
+
+Accelerometer:
+* `window.addEventListener("devicemotion")` event provides the acceleration of the device 
+* `event.accelerationIncludingGravity` 
+
+
